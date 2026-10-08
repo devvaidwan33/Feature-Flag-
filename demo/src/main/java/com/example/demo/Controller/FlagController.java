@@ -40,5 +40,13 @@ public class FlagController {
     public Flag setState(@PathVariable UUID flagId, @Valid @RequestBody UpdateFlagStateRequest request) {
         return flagService.setEnabled(flagId, request.enabled());
     }
+    @DeleteMapping("/orgs/{orgId}/projects/{projectId}/flags/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void DeleteById(@PathVariable UUID id){
+         flagService.deleteById(id);
+    }
+    //pathvariable uuid id is the name that we need to give in url
+    //i.e /{id} == @pathvariable uuid id
+    // {flagId}== @pathvariable ("flagId) UUID id;
 }
 
